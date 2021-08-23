@@ -1,29 +1,30 @@
 <div>
     {% url 'index' as index_url %}
-    <!-- el nombre de 'index' hace match con el arg name en el path en urls.py-->
+    <!--los spans tienen el django tag de url para darle la funcionalidad de url 
+        y las condiciones son para no cargar el tag si ya esta dentro de esa url-->
+
     <span>
         {% if request.path == index_url %} Home 
         {% else %}<a href="{{index_url}}">Home</a>{% endif %}
      </span> 
 
-    {% url 'weather_change' as weather_url %}
+    {% url 'interview_problems:weather_change' as weather_url %}
      <span>
         {% if request.path == weather_url %} Weather
          {% else %} <a href="{{weather_url}}"> Weather</a> {% endif %}
      </span>
 
-     {% url 'customer_order_status' as customer_url %}
+     {% url 'interview_problems:customer_order_status' as customer_url %}
     <span>
         {% if request.path == customer_url %} Customer
         {% else %} <a href="{{customer_url}}">Customer</a> {% endif %}
     </span>
     
-    {% url 'seasons' as seasons_url %}
+    {% url 'interview_problems:seasons' as seasons_url %}
     <span>
         {% if request.path == seasons_url %} Seasons
         {% else %} <a href="{{seasons_url}}">Seasons</a> {% endif %}
     </span>
-
 
 
 </div>
