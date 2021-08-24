@@ -21,7 +21,7 @@ PROJECT_DIR = os.path.join(BASE_DIR,"softtek_project")
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'z-+(ryyak9i86=ta@ga3j+e2_0ih-7k*5*)wk(6ia5g^4cr37r'
+SECRET_KEY = 'aujfvvkmj1dzlir)i=tgjuh7a53z%8@y-1sc!xkr+zz^$^5961'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
