@@ -9,10 +9,28 @@
 <h2> si que si estas en el template de weather change</h2>
 
 <h4>Instructions</h4>
-<p> You have a table containing data on the weather.
-     Each date has a boolean indicating if it rained (TRUE) or did not rain (FALSE).
-     Query the table to determine the dates in which the weather became bad (i.e. when the weather changed from FALSE to TRUE).
-</p>
+<p> You have a table containing data on the weather.</p>
+<p> Each date has a boolean indicating if it rained (TRUE) or did not rain (FALSE).</p>
+<p> Query the table to determine the dates in which the weather became bad 
+     (i.e. when the weather changed from FALSE to TRUE).</p>
+
+
+<table>
+     <tr>
+          <th>Date</th>
+          <th>Was rainy</th>
+     </tr>
+
+     {%for day in weather_data %}
+     <tr>
+          <td>{{day.date}}</td>
+          <td>{{day.was_rainy}}</td>    
+     </tr>
+     {%endfor%}
+    
+</table>
+
+
 
 
 {% endblock %}
