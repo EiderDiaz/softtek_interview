@@ -1,0 +1,56 @@
+#main {
+    padding-top: 74px;
+}
+
+@media (min-width: 992px) {
+    #main {
+      padding-top: 104px;
+    }
+}
+
+
+.sczen-bg-primary {
+    background-color: #08765D;
+}
+
+
+#mainNav .navbar-nav li.nav-item a.nav-link {
+    border-bottom: 2px solid transparent;
+    transition: border-bottom 2s, color 2s;
+}
+    #mainNav .navbar-nav li.nav-item a.nav-link:hover {
+    color: #08765D;
+    border-color: #08765D;
+    }
+    #mainNav .navbar-nav li.nav-item a.nav-link.active {
+    background: none;
+    color: white;
+    border-color: #08765D;
+    }
+
+    #mainNav .navbar-nav li.nav-item a.nav-Link.active:hover {
+    background: none;
+    color: #08765D;
+    }
+
+    .masthead {
+        padding-top: 6rem;
+        padding-bottom: 6rem;
+
+    }
+
+    @media (min-width: 992px) {
+        .masthead {
+            padding-top: 6rem;
+            padding-bottom: 6rem;
+
+        }
+    }
+/*  to add a banner to a home page
+    .masthead {
+        background-image: url("../img/garbage-banner.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+
+    }
+    */

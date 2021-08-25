@@ -1,8 +1,38 @@
 <div>
     {% url 'index' as index_url %}
-    <!--los spans tienen el django tag de url para darle la funcionalidad de url 
-        y las condiciones son para no cargar el tag si ya esta dentro de esa url-->
+    {% url 'problems:weather_change' as weather_url %}
+    {% url 'problems:customer_order_status' as customer_url %}
+    {% url 'problems:seasons' as seasons_url %}
 
+
+        <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
+            <div class="container">
+                <a class="navbar-brand" href="{{index_url}}">Softtek Intv.</a>
+                <button class="navbar-toggler text-uppercase font-weight-bold sczen-bg-primary text-white rounded" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3
+                               {% if request.path == index_url %}active{% endif%}" href="{{index_url}}">Home</a></li><!--add the active css class if the request path is the current -->
+
+
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3
+                              {% if request.path == weather_url %}active{% endif%}" href="{{weather_url}}">Weather</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 
+                             {% if request.path == customer_url %} active{% endif%}" href="{{customer_url}}">Customer</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 
+                             {% if request.path == seasons_url %} active{% endif%}" href="{{seasons_url}}">Seasons</a></li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+
+{% comment "old navbar" %}
+    
     <span>
         {% if request.path == index_url %} Home 
         {% else %}<a href="{{index_url}}">Home</a>{% endif %}
@@ -26,5 +56,5 @@
         {% else %} <a href="{{seasons_url}}">Seasons</a> {% endif %}
     </span>
 
-
+    {% endcomment  %}
 </div>

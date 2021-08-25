@@ -1,9 +1,18 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %} Home {% endblock %}
 
 
 {% block content %}
-este es el index
-
+ <!-- Masthead-->
+ <header class="masthead bg-primary text-white text-center">
+    <div class="container d-flex align-items-center flex-column">
+        <!-- Masthead Avatar Image-->
+        <img class="masthead-avatar mb-5" src="{% static 'img/eider-c.png' %}" alt="..." />
+        <!-- Masthead Heading-->
+        <h1 class="masthead-heading text-uppercase mb-0">Lorem ipsum dolor</h1>
+       
+    </div>
+</header>
 {% endblock %}
