@@ -1,11 +1,113 @@
 {% extends 'base.html' %}
 
 
-{% block title %}  Customer order status {% endblock %}
+{% block title %} Customer order status {% endblock %}
+{%load static %}
 
 
 {% block content %}
 
-<h2> si que si estas en el template de Customer order status</h2>
+<!-- Portfolio Section-->
+<section class="page-section portfolio" id="portfolio">
+    <div class="container">
+        <!-- Portfolio Section Heading-->
+        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">
+            Customer Order Status Instructions</h2>
+        <!-- Icon Divider-->
+        <div class="divider-custom">
+            <div class="divider-custom-line"></div>
+            <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+            <div class="divider-custom-line"></div>
+        </div>
+        <p> You have a data source containing order-line data (each order can have multiple order lines based on the
+            number of products ordered under that specific order).</p>
 
+        <p> An order line item can be in one of the following three statuses: Pending, Shipped, Cancelled. </p>
+        <p> You want to determine the status of the overall order based on the statuses of each individual order line
+            item for that order.</p>
+        <p>For example, if you have three items in order number 1234, and two of them are marked 'Shipped" but one is
+            marked "Pending' then the overall order status is Pending. </p>
+
+        <p> If all are marked "Shipped" then the Status is 'Shipped'.
+        <p>
+
+            <!-- Portfolio Grid Items-->
+        <div class="row justify-content-center">
+            <!-- Portfolio Item 1-->
+            <div class="col-lg-4 mb-5">
+                <div>
+                    <table>
+                        <tr>
+                            <th>Order number</th>
+                            <th>Item name</th>
+                            <th>Status</th>
+
+                        </tr>
+
+                        {%for order in customer_order_status %}
+                        <tr>
+                            <td>{{order.order_number}}</td>
+                            <td>{{order.item_name}}</td>
+                            <td>{{order.status}}</td>
+
+                        </tr>
+                        {%endfor%}
+
+                    </table>
+                </div>
+
+            </div>
+            <!-- Portfolio Item 2-->
+            <div class="col-lg-4 mb-5">
+                <div>
+                    <table>
+                        <tr>
+                            <th>Order number</th>
+                            <th>Item name</th>
+                            <th>Status</th>
+
+                        </tr>
+
+                        {%for order in customer_order_status %}
+                        <tr>
+                            <td>{{order.order_number}}</td>
+                            <td>{{order.item_name}}</td>
+                            <td>{{order.status}}</td>
+
+                        </tr>
+                        {%endfor%}
+
+                    </table>
+                </div>
+            </div>
+
+            <!-- Portfolio Item 3-->
+            <div class="col-lg-4 mb-5">
+                <div>
+                    <table>
+                        <tr>
+                            <th>Order number</th>
+                            <th>Item name</th>
+                            <th>Status</th>
+
+                        </tr>
+
+                        {%for order in customer_order_status %}
+                        <tr>
+                            <td>{{order.order_number}}</td>
+                            <td>{{order.item_name}}</td>
+                            <td>{{order.status}}</td>
+
+                        </tr>
+                        {%endfor%}
+
+                    </table>
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+</section>
 {% endblock %}
