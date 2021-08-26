@@ -23,11 +23,10 @@ def weather(request):
         # pass it to the func detect_weather_change
         if form.is_valid():
             is_good_to_bad = form.cleaned_data["is_good_to_bad"]
-            result = detect_weather_change(is_good_to_bad)
-            print(result)
+            weather_changed_df = detect_weather_change(is_good_to_bad)
 
             return render(request,'weather_change.html', {"weather_data":weather_data,"success":True,
-             "form":form,"result":result } )
+             "form":form,"weather_changed_df":weather_changed_df } )
     else:
         raise NotImplementedError
     return render(request, 'weather_change.html', {"form":form})
@@ -59,13 +58,15 @@ def customer(request):
         #get wheather data from dataset 
         if 'btnform1' in request.POST:
             df = pd.DataFrame(list(customer_order_status.values()))
-            results =  df
-            response = HttpResponse(content_type='text/csv')
-            response['Content-Disposition'] = 'attachment; filename=customer_order_status.csv'
-            results.to_csv(path_or_buf=response,sep=',',index=False,decimal=",")
-            return response
-
-        return render(request,'customer_order_status.html', {"customer_order_status":customer_order_status,"success":True } )
+            #group the dataframe by ordername and get only the status column
+            grouped_df = df.groupby(['order_number'])["status"]
+            #since the hierarchy of the categorical ordinal values allows it just get the min od the grouped order
+            overall_order_status_df = grouped_df.apply(lambda x: min(x)).to_frame()
+            #rename the column to overall_status instead just 0
+            overall_order_status_df= overall_order_status_df.set_axis(['overall_status'], axis='columns')
+            #print(overall_order_status_df)
+        return render(request,'customer_order_status.html', 
+        {"customer_order_status":customer_order_status,"success":True, "overall_order_status_df":overall_order_status_df } )
     else:
         raise NotImplementedError
     return render(request, 'customer_order_status.html', {"form":form})

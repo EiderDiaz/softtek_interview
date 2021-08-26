@@ -7,10 +7,10 @@
 {% block content %}
 
 
-<!-- Portfolio Section-->
+<!--  Section-->
 <section class="page-section portfolio" id="portfolio">
      <div class="container">
-          <!-- Portfolio Section Heading-->
+          <!--  Section Heading-->
           <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Instructions</h2>
           <!-- Icon Divider-->
           <div class="divider-custom">
@@ -22,9 +22,9 @@
           <p> Each date has a boolean indicating if it rained (TRUE) or did not rain (FALSE).</p>
           <p> Query the table to determine the dates in which the weather became bad
                (i.e. when the weather changed from FALSE to TRUE).</p>
-          <!-- Portfolio Grid Items-->
+          <!--  Grid Items-->
           <div class="row justify-content-center">
-               <!-- Portfolio Item 1-->
+               <!--  Item 1-->
                <div class="col-lg-4 mb-5">
                     <div>
                          <table>
@@ -44,7 +44,7 @@
                     </div>
 
                </div>
-               <!-- Portfolio Item 2-->
+               <!--  Item 2-->
                <div class="col-lg-4 mb-5">
                     {%if success %}
                     <table>
@@ -53,7 +53,7 @@
                               <th>Was rainy</th>
                          </tr>
 
-                         {%for index,day in result.iterrows %}
+                         {%for index,day in weather_changed_df.iterrows %}
                          <tr>
                               <td>{{day.date}}</td>
                               <td>{{day.was_rainy}}</td>
@@ -87,7 +87,7 @@
                     </div>
                </div>
 
-               <!-- Portfolio Item 3-->
+               <!--  Item 3-->
                <div class="col-lg-4 mb-5">
                     <table>
                          <tr>

@@ -48,7 +48,13 @@
                         <tr>
                             <td>{{order.order_number}}</td>
                             <td>{{order.item_name}}</td>
-                            <td>{{order.status}}</td>
+                            {% if order.status == 1 %}
+                                <td>Pending</td>
+                            {% elif order.status == 2 %}
+                                <td>Shipped</td>
+                            {% else %}
+                                <td>Cancelled</td>
+                            {% endif %}
 
                         </tr>
                         {%endfor%}
@@ -68,25 +74,31 @@
                      </div>
                 </form>
 
-                <div>
-                    <table>
-                        <tr>
-                            <th>Order number</th>
-                            <th>Item name</th>
-                            <th>Status</th>
+                {% if success %}
+                <table>
+                    <tr>
+                        <th>Order number</th>
+                        <th>Status</th>
 
-                        </tr>
+                    </tr>
 
-                        {%for order in customer_order_status %}
-                        <tr>
-                            <td>{{order.order_number}}</td>
-                            <td>{{order.item_name}}</td>
-                            <td>{{order.status}}</td>
+                     {%for index, order in overall_order_status_df.iterrows  %}
+                     <tr>
+                         <td>{{index}}</td>
+                         {% if order.overall_status == 1 %}
+                             <td>Pending</td>
+                         {% elif order.overall_status == 2 %}
+                             <td>Shipped</td>
+                         {% else %}
+                             <td>Cancelled</td>
+                         {% endif %}
 
-                        </tr>
-                        {%endfor%}
+                     </tr>
+                     {%endfor%}
+                
                     </table>
-                </div>
+                {%endif%} <!-- end success-->
+
 
             </div>
 

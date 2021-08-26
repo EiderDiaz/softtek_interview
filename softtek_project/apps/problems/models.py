@@ -19,4 +19,4 @@ class CustomerOrderStatus(models.Model):
     ]
     order_number = models.CharField(blank=False,null=False,max_length=16)
     item_name = models.CharField(blank=False,null=False,max_length=120)
-    status = models.CharField(blank=False,null=False,max_length=4, choices=ORDER_STATUS_CHOICES, default=PENDING)
+    status = models.IntegerField(blank=False,null=False, choices=ORDER_STATUS_CHOICES, default=PENDING)
