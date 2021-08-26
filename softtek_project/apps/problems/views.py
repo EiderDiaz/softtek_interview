@@ -49,15 +49,22 @@ def detect_weather_change(is_good_to_bad):
 
 
 def customer(request):
-
+    #get order data from dataset 
+    customer_order_status = CustomerOrderStatus.objects.all()
+    
     if request.method == "GET":
-        #get order data from dataset 
-        customer_order_status = CustomerOrderStatus.objects.all()
         #render the page and pass the form and the data
         return render(request,'customer_order_status.html',{"customer_order_status":customer_order_status })
     elif request.method == "POST":
         #get wheather data from dataset 
-        customer_order_status = CustomerOrderStatus.objects.all()
+        if 'btnform1' in request.POST:
+            df = pd.DataFrame(list(customer_order_status.values()))
+            results =  df
+            response = HttpResponse(content_type='text/csv')
+            response['Content-Disposition'] = 'attachment; filename=customer_order_status.csv'
+            results.to_csv(path_or_buf=response,sep=',',index=False,decimal=",")
+            return response
+
         return render(request,'customer_order_status.html', {"customer_order_status":customer_order_status,"success":True } )
     else:
         raise NotImplementedError

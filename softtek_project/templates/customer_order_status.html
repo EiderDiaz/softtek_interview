@@ -7,10 +7,10 @@
 
 {% block content %}
 
-<!-- Portfolio Section-->
+<!--  Section-->
 <section class="page-section portfolio" id="portfolio">
     <div class="container">
-        <!-- Portfolio Section Heading-->
+        <!--  Section Heading-->
         <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">
             Customer Order Status Instructions</h2>
         <!-- Icon Divider-->
@@ -31,9 +31,9 @@
         <p> If all are marked "Shipped" then the Status is 'Shipped'.
         <p>
 
-            <!-- Portfolio Grid Items-->
+            <!--  Grid Items-->
         <div class="row justify-content-center">
-            <!-- Portfolio Item 1-->
+            <!--  Item 1-->
             <div class="col-lg-4 mb-5">
                 <div>
                     <table>
@@ -57,8 +57,17 @@
                 </div>
 
             </div>
-            <!-- Portfolio Item 2-->
+            <!--  Item 2-->
             <div class="col-lg-4 mb-5">
+                <!--form -->
+                <form method='POST'>
+                    {% csrf_token %}
+                    <div class="form-group">
+                         <button class="btn sczen-bg-primary btn-xl text-white"
+                         name="btnform1" type="submit"> Get orders status</button>
+                     </div>
+                </form>
+
                 <div>
                     <table>
                         <tr>
@@ -76,12 +85,12 @@
 
                         </tr>
                         {%endfor%}
-
                     </table>
                 </div>
+
             </div>
 
-            <!-- Portfolio Item 3-->
+            <!--  Item 3-->
             <div class="col-lg-4 mb-5">
                 <div>
                     <table>

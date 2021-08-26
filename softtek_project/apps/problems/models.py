@@ -8,9 +8,9 @@ class detecting_change(models.Model):
 
 class CustomerOrderStatus(models.Model):
 
-    PENDING = 'PEND'
-    SHIPPED  = 'SHIP'
-    CANCELLED  = 'CANC'
+    PENDING = 1
+    SHIPPED  = 2
+    CANCELLED  = 3
 
     ORDER_STATUS_CHOICES = [
         (PENDING, 'Pending'),
