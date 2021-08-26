@@ -2,35 +2,114 @@
 
 
 {% block title %} Weather Change {% endblock %}
-
+{%load static %}
 
 {% block content %}
 
-<h2> si que si estas en el template de weather change</h2>
 
-<h4>Instructions</h4>
-<p> You have a table containing data on the weather.</p>
-<p> Each date has a boolean indicating if it rained (TRUE) or did not rain (FALSE).</p>
-<p> Query the table to determine the dates in which the weather became bad 
-     (i.e. when the weather changed from FALSE to TRUE).</p>
+<!-- Portfolio Section-->
+<section class="page-section portfolio" id="portfolio">
+     <div class="container">
+          <!-- Portfolio Section Heading-->
+          <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Instructions</h2>
+          <!-- Icon Divider-->
+          <div class="divider-custom">
+               <div class="divider-custom-line"></div>
+               <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+               <div class="divider-custom-line"></div>
+          </div>
+          <p> You have a table containing data on the weather.</p>
+          <p> Each date has a boolean indicating if it rained (TRUE) or did not rain (FALSE).</p>
+          <p> Query the table to determine the dates in which the weather became bad
+               (i.e. when the weather changed from FALSE to TRUE).</p>
+          <!-- Portfolio Grid Items-->
+          <div class="row justify-content-center">
+               <!-- Portfolio Item 1-->
+               <div class="col-lg-4 mb-5">
+                    <div>
+                         <table>
+                              <tr>
+                                   <th>Date</th>
+                                   <th>Was rainy</th>
+                              </tr>
+
+                              {%for day in weather_data %}
+                              <tr>
+                                   <td>{{day.date}}</td>
+                                   <td>{{day.was_rainy}}</td>
+                              </tr>
+                              {%endfor%}
+
+                         </table>
+                    </div>
+
+               </div>
+               <!-- Portfolio Item 2-->
+               <div class="col-lg-4 mb-5">
+                    {%if success %}
+                    <table>
+                         <tr>
+                              <th>Date</th>
+                              <th>Was rainy</th>
+                         </tr>
+
+                         {%for index,day in result.iterrows %}
+                         <tr>
+                              <td>{{day.date}}</td>
+                              <td>{{day.was_rainy}}</td>
+                         </tr>
+                         {%endfor%}
+
+                    </table>
+                    {%endif%}
+
+                    <!--el form-->
+                    <div>
+                         <form id="WeatherChangeForm" name="FromBadToGood" novalidate="novalidate" , method="post">
+                              {% csrf_token %}
+                              <!--load each field from the WeatherChangeForm (in this case is just 1)-->
+                              {% for field in form %}
+                              <div class="control-group">
+                                   <div class=" form-group floating-label-form-group controls mb-0 pb-2">
+                                        {{ field.label_tag }}
+                                        <!--load the attr from the WeatherChangeForm -->
+                                        {{ field }}
+                                        <!--load the field itself -->
+                                        {% for error in field.errors %}
+                                        <p class="help-black text-danger"> {{error}}</p>
+                                        {% endfor %}
+                                   </div>
+                              </div>
+                              {% endfor %}
+                              <div class="form-group"> <button class="btn sczen-bg-primary btn-xl text-white"
+                                        id="sendFromBadToGood" type="submit"> Send</button> </div>
+                         </form>
+                    </div>
+               </div>
+
+               <!-- Portfolio Item 3-->
+               <div class="col-lg-4 mb-5">
+                    <table>
+                         <tr>
+                              <th>Date</th>
+                              <th>Was rainy</th>
+                         </tr>
+
+                         {%for day in weather_data %}
+                         <tr>
+                              <td>{{day.date}}</td>
+                              <td>{{day.was_rainy}}</td>
+                         </tr>
+                         {%endfor%}
+
+                    </table>
+               </div>
+
+          </div>
 
 
-<table>
-     <tr>
-          <th>Date</th>
-          <th>Was rainy</th>
-     </tr>
-
-     {%for day in weather_data %}
-     <tr>
-          <td>{{day.date}}</td>
-          <td>{{day.was_rainy}}</td>    
-     </tr>
-     {%endfor%}
-    
-</table>
-
-
+     </div>
+</section>
 
 
 {% endblock %}
