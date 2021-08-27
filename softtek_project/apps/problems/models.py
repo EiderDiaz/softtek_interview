@@ -20,3 +20,8 @@ class CustomerOrderStatus(models.Model):
     order_number = models.CharField(blank=False,null=False,max_length=16)
     item_name = models.CharField(blank=False,null=False,max_length=120)
     status = models.IntegerField(blank=False,null=False, choices=ORDER_STATUS_CHOICES, default=PENDING)
+
+class Season(models.Model):
+    ord_id =  models.CharField(blank=False,null=False,max_length=42, primary_key=True)
+    date = models.DateField(blank=False,null=False)
+

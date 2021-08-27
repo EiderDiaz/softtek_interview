@@ -1,11 +1,119 @@
 {% extends 'base.html' %}
 
 
-{% block title %}  Seasons {% endblock %}
+{% block title %} Seasons {% endblock %}
 
 
 {% block content %}
 
-<h2> si que si estas en el template de Seasons</h2>
+<!--  Section-->
+<section class="page-section portfolio" id="portfolio">
+    <div class="container">
+        <!--  Section Heading-->
+        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">
+            Seasons Quarter Instructions</h2>
+        <!-- Icon Divider-->
+        <div class="divider-custom">
+            <div class="divider-custom-line"></div>
+            <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+            <div class="divider-custom-line"></div>
+        </div>
+        <p> You have a table containing a large number of orders over several years </p>
+        <p> a sample is shown below. Each order has a date attribute that you will need to use
+            to determine the season in which this order was placed.</p>
 
+        <p> For reference see the table containing the dates in which each season falls.</p>
+           <!--reference table--> 
+        <table>
+            <tr>
+                <th>Season</th>
+                <th>Date Range</th>
+            </tr>
+
+            <tr>
+                <td><b>Spring</b></td>
+                <td>March 19th - June 19th</td>
+            </tr>
+            <tr>
+                <td><b>Summer</b></td>
+                <td>June 20th - September 21st</td>
+            </tr>
+            <tr>
+                <td><b>Fall</b></td>
+                <td> September 22nd - December 20th</td>
+            </tr>
+            <tr>
+                <td><b>Winter</b></td>
+                <td> December 20th - March 18th</td>
+            </tr>
+
+        </table>
+        <br>
+
+        <!--  Grid Items-->
+        <div class="row justify-content-center">
+            <!--  Item 1-->
+            <div class="col-lg-4 mb-5">
+                <div>
+                    <table>
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Order date</th>
+
+                        </tr>
+
+                        {% for order in Season_qs %}
+                        <tr>
+                            <td>{{order.ord_id}}</td>
+                            <td>{{order.date}}</td>
+                        </tr>
+                        {%endfor%}
+
+                    </table>
+                </div>
+
+            </div>
+            <!--  Item 2-->
+            <div class="col-lg-4 mb-5">
+                <!--form -->
+                <form method='POST'>
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <button class="btn sczen-bg-primary btn-xl text-white" name="btnform1" type="submit"> Get orders
+                            status</button>
+                    </div>
+                </form>
+                <br>
+                {% if success %}
+                <table>
+                    <tr>
+                        <th>Order ID</th>
+                        <th>Season</th>
+
+                    </tr>
+
+                     {%for index, order in season_df.iterrows  %}
+                     <tr>
+                         <td>{{order.ord_id}}</td>
+                         <td>{{order.date}}</td>
+                     </tr>
+                     {%endfor%}
+                
+                    </table>
+                {%endif%} <!-- end success-->
+
+
+            </div>
+
+            <!--  Item 3-->
+            <div class="col-lg-4 mb-5">
+                
+               
+            </div>
+
+        </div>
+
+
+    </div>
+</section>
 {% endblock %}
