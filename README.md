@@ -7,7 +7,7 @@ Setup project environment with [virtualenv](https://virtualenv.pypa.io) and [pip
 ```bash
 $ virtualenv soft_venv
 $ source soft_venv/bin/activate
-$ pip install -r https://raw.githubusercontent.com/eiderdiazsofttek_interview/main/requirements.txt
+$ pip install -r https://raw.githubusercontent.com/eiderdiaz/softtek_interview/main/requirements.txt
 
 
 $ cd softtek_project/
