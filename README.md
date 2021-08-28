@@ -15,6 +15,9 @@ $ python manage.py runserver
 
 ```
 
+## super user to the admin panel
+- user: eiderdiaz
+- password: softtek1379
 
 
 ## The important files to see the implementation are the ones market with a ✨:
